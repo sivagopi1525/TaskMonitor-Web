@@ -1,0 +1,12 @@
+[
+  { "id": "EM-101", "name": "John Doe", "position": "Developer", "Details":{"rank": "A", "credit": 1200, "debit": 200 }},
+  { "id": "EM-102", "name": "Jane Smith", "position": "Designer", "Details":{"rank": "B", "credit": 1100, "debit": 150 }},
+  { "id": "EM-103", "name": "Michael Johnson", "position": "Manager", "Details":{"rank": "A", "credit": 1500, "debit": 300} },
+  { "id": "EM-104", "name": "Emily Davis", "position": "QA Engineer", "Details":{"rank": "C", "credit": 1000, "debit": 100 }},
+  { "id": "EM-105", "name": "William Brown", "position": "Developer", "Details":{"rank": "B", "credit": 1300, "debit": 250 }},
+  { "id": "EM-106", "name": "Olivia Wilson", "position": "Designer", "Details":{"rank": "A", "credit": 1400, "debit": 200 }},
+  { "id": "EM-107", "name": "James Taylor", "position": "Manager", "Details":{"rank": "B", "credit": 1600, "debit": 400 }},
+  { "id": "EM-108", "name": "Sophia Moore", "position": "Developer", "Details":{"rank": "C", "credit": 1200, "debit": 150} },
+  { "id": "EM-109", "name": "Benjamin Lee", "position": "QA Engineer", "Details":{"rank": "B", "credit": 1100, "debit": 100 }},
+  { "id": "EM-110", "name": "Emma Harris", "position": "Designer", "Details":{"rank": "A", "credit": 1350, "debit": 180 }}
+]

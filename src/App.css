@@ -1,0 +1,20 @@
+.header{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.appbody{
+  min-height: 600px;
+  padding: 20px;
+}
+
+.appfooter{
+  text-align: center;
+  padding: 10px;
+  background-color: #f1f1f1;
+}
+.blackbutton{
+  color: white;
+  background-color: black;
+}
