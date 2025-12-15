@@ -12,7 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
-    <BrowserRouter >
+   <BrowserRouter basename="/">
       <Routes>
 
         {/* Public Routes */}
