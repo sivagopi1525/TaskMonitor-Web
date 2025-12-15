@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/sivagopi1525/TaskMonitor-Web/static/css/main.3f8c3b22.css",
-    "main.js": "/sivagopi1525/TaskMonitor-Web/static/js/main.54afe3fd.js",
-    "static/js/453.60edd8ad.chunk.js": "/sivagopi1525/TaskMonitor-Web/static/js/453.60edd8ad.chunk.js",
-    "index.html": "/sivagopi1525/TaskMonitor-Web/index.html",
-    "main.3f8c3b22.css.map": "/sivagopi1525/TaskMonitor-Web/static/css/main.3f8c3b22.css.map",
-    "main.54afe3fd.js.map": "/sivagopi1525/TaskMonitor-Web/static/js/main.54afe3fd.js.map",
-    "453.60edd8ad.chunk.js.map": "/sivagopi1525/TaskMonitor-Web/static/js/453.60edd8ad.chunk.js.map"
+    "main.css": "/TaskMonitor-Web/static/css/main.db7a39fe.css",
+    "main.js": "/TaskMonitor-Web/static/js/main.b6b5c5b3.js",
+    "static/js/453.60edd8ad.chunk.js": "/TaskMonitor-Web/static/js/453.60edd8ad.chunk.js",
+    "index.html": "/TaskMonitor-Web/index.html",
+    "main.db7a39fe.css.map": "/TaskMonitor-Web/static/css/main.db7a39fe.css.map",
+    "main.b6b5c5b3.js.map": "/TaskMonitor-Web/static/js/main.b6b5c5b3.js.map",
+    "453.60edd8ad.chunk.js.map": "/TaskMonitor-Web/static/js/453.60edd8ad.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f8c3b22.css",
-    "static/js/main.54afe3fd.js"
+    "static/css/main.db7a39fe.css",
+    "static/js/main.b6b5c5b3.js"
   ]
 }
