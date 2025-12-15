@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Employee-tracker/static/css/main.3f8c3b22.css",
-    "main.js": "/Employee-tracker/static/js/main.29aec039.js",
-    "static/js/453.60edd8ad.chunk.js": "/Employee-tracker/static/js/453.60edd8ad.chunk.js",
-    "index.html": "/Employee-tracker/index.html",
-    "main.3f8c3b22.css.map": "/Employee-tracker/static/css/main.3f8c3b22.css.map",
-    "main.29aec039.js.map": "/Employee-tracker/static/js/main.29aec039.js.map",
-    "453.60edd8ad.chunk.js.map": "/Employee-tracker/static/js/453.60edd8ad.chunk.js.map"
+    "main.css": "/sivagopi1525/TaskMonitor-Web/static/css/main.3f8c3b22.css",
+    "main.js": "/sivagopi1525/TaskMonitor-Web/static/js/main.54afe3fd.js",
+    "static/js/453.60edd8ad.chunk.js": "/sivagopi1525/TaskMonitor-Web/static/js/453.60edd8ad.chunk.js",
+    "index.html": "/sivagopi1525/TaskMonitor-Web/index.html",
+    "main.3f8c3b22.css.map": "/sivagopi1525/TaskMonitor-Web/static/css/main.3f8c3b22.css.map",
+    "main.54afe3fd.js.map": "/sivagopi1525/TaskMonitor-Web/static/js/main.54afe3fd.js.map",
+    "453.60edd8ad.chunk.js.map": "/sivagopi1525/TaskMonitor-Web/static/js/453.60edd8ad.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3f8c3b22.css",
-    "static/js/main.29aec039.js"
+    "static/js/main.54afe3fd.js"
   ]
 }

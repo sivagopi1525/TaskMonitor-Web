@@ -12,7 +12,6 @@ import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
-    
     <BrowserRouter >
       <Routes>
 
