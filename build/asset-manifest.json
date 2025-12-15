@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Employee-tracker/static/css/main.3f8c3b22.css",
+    "main.js": "/Employee-tracker/static/js/main.29aec039.js",
+    "static/js/453.60edd8ad.chunk.js": "/Employee-tracker/static/js/453.60edd8ad.chunk.js",
+    "index.html": "/Employee-tracker/index.html",
+    "main.3f8c3b22.css.map": "/Employee-tracker/static/css/main.3f8c3b22.css.map",
+    "main.29aec039.js.map": "/Employee-tracker/static/js/main.29aec039.js.map",
+    "453.60edd8ad.chunk.js.map": "/Employee-tracker/static/js/453.60edd8ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3f8c3b22.css",
+    "static/js/main.29aec039.js"
+  ]
+}

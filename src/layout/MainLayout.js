@@ -41,7 +41,7 @@ function AppHeader() {
         <Landmark size={28} onClick={goToHome} style={{ cursor: "pointer" }} />
       </div>
       <div style={{ width: "50%", textAlign: "center" }}>
-        <h2>Welcome Employee Tracker</h2>
+        <h2>Employee Tracker</h2>
       </div>
       <div
         style={{

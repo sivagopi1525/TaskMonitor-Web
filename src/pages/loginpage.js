@@ -24,8 +24,9 @@ export default function Login() {
     }
     try {
       const apires = await authService.authlogin(body)
-      console.log(apires)
+      console.log(apires?.data)
       localStorage.setItem("auth", "true");
+      localStorage.setItem("token",apires?.data?.token);
       setLoading(false)
       navigate("/main/home");
     } catch {
