@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Landmark,
   LogOut,
@@ -33,7 +33,10 @@ function AppHeader() {
   const goToHome = () => navigate("/main/home");
   const goToEmployeeTable = () => navigate("/main/EmployeeTable");
   const goToEmployeeCards = () => navigate("/main/EmployeeCards");
-  const handleLogout = () => navigate('/login');
+  const handleLogout = () => {
+    navigate('/login');
+    localStorage.clear()
+  }
 
   return (
     <div className="header d-flex align-items-center justify-content-between p-3 bg-light shadow-sm">

@@ -2,6 +2,9 @@
    background-color: lightblue;
     cursor: pointer;
 }
+#basic-button{
+  font-size: 30px;
+}
 
 .employeedata{
   margin-top: 20px;
