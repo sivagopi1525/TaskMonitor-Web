@@ -4,22 +4,16 @@ import { itemService } from "../services/item";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { FiPlus } from "react-icons/fi";
+import AddTaskPopup from "../Modal/itemModal"
 export default function EmployeeTable() {
+  const [popupopen, setPopupopen] = useState(false);
   const [taskitems, setTaskitems] = useState([])
   const [startdate, setStartdate] = useState("");
   const [enddate, setEnddate] = useState("");
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState("");
   useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const res = await itemService.Getitems();
-        console.log(res);        // actual response data
-        setTaskitems(res);
-      } catch (error) {
-        console.error(error);
-      }
-    };
 
     fetchItems();
     const mockUsers = [
@@ -29,13 +23,20 @@ export default function EmployeeTable() {
     ];
     setUsers(mockUsers);
   }, []);
-
+  const fetchItems = async () => {
+    try {
+      const res = await itemService.Getitems();
+      console.log(res);        // actual response data
+      setTaskitems(res);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const handleFilter = () => {
     console.log('startdate', startdate)
     console.log('enddate', enddate)
     console.log('selectedUser', selectedUser)
   };
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -44,12 +45,40 @@ export default function EmployeeTable() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const edititem=()=>{
+  const edititem = () => {
     handleClose()
   }
-  const deleteitem=()=>{
+  const deleteitem = () => {
     handleClose()
   }
+  const popupopenmodal = () => {
+    setPopupopen(true)
+  }
+  const handleAddTask = async (formData) => {
+    try {
+      const now = new Date();
+
+      const payload = {
+        ...formData,
+        Date: now.toLocaleString("en-IN", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }),
+        Name: localStorage.getItem("Username"),
+      };
+
+      console.log("Received from child:", payload);
+      const res = await itemService.Createitem(payload);
+      console.log(res);
+      fetchItems()
+
+    } catch (error) {
+      console.error("Create item failed:", error);
+    }
+  };
+
+
 
 
 
@@ -97,6 +126,11 @@ export default function EmployeeTable() {
               Filter
             </button>
           </div>
+          <div>
+            <button className="filter-btn" onClick={popupopenmodal}>
+              <FiPlus /> Add
+            </button>
+          </div>
         </div>
       </div>
       <div className="table-card">
@@ -135,7 +169,7 @@ export default function EmployeeTable() {
                           aria-expanded={open ? 'true' : undefined}
                           onClick={handleClick}
                         >
-                         &#8942;
+                          &#8942;
                         </Button>
                         <Menu
                           id="basic-menu"
@@ -161,7 +195,19 @@ export default function EmployeeTable() {
           </tbody>
         </table>
       </div>
+
+
+      <AddTaskPopup
+        onClose={() => setPopupopen(false)}
+      />
+      <AddTaskPopup
+        open={popupopen}
+        onClose={() => setPopupopen(false)}
+        onSubmit={handleAddTask}
+      />
+
     </div>
+
   );
 
 };

@@ -1,0 +1,32 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+
+  background-color: transparent; /* ✅ parent stays visible */
+  pointer-events: none;          /* optional */
+}
+
+.modal-content {
+  width: 50%;
+  max-width: 700px;
+  min-width: 320px;
+
+  background-color: #ffffff; /* ✅ ONLY popup is white */
+  border-radius: 8px;
+  padding: 20px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  pointer-events: auto; /* allows click inside popup */
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+  }
+}
