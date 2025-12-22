@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/TaskMonitor-Web/static/css/main.db7a39fe.css",
-    "main.js": "/TaskMonitor-Web/static/js/main.80adfcbf.js",
-    "static/js/453.60edd8ad.chunk.js": "/TaskMonitor-Web/static/js/453.60edd8ad.chunk.js",
+    "main.css": "/TaskMonitor-Web/static/css/main.3956628a.css",
+    "main.js": "/TaskMonitor-Web/static/js/main.3a72468c.js",
+    "static/js/453.67a68efe.chunk.js": "/TaskMonitor-Web/static/js/453.67a68efe.chunk.js",
     "index.html": "/TaskMonitor-Web/index.html",
-    "main.db7a39fe.css.map": "/TaskMonitor-Web/static/css/main.db7a39fe.css.map",
-    "main.80adfcbf.js.map": "/TaskMonitor-Web/static/js/main.80adfcbf.js.map",
-    "453.60edd8ad.chunk.js.map": "/TaskMonitor-Web/static/js/453.60edd8ad.chunk.js.map"
+    "main.3956628a.css.map": "/TaskMonitor-Web/static/css/main.3956628a.css.map",
+    "main.3a72468c.js.map": "/TaskMonitor-Web/static/js/main.3a72468c.js.map",
+    "453.67a68efe.chunk.js.map": "/TaskMonitor-Web/static/js/453.67a68efe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.db7a39fe.css",
-    "static/js/main.80adfcbf.js"
+    "static/css/main.3956628a.css",
+    "static/js/main.3a72468c.js"
   ]
 }
