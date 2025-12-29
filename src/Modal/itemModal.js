@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 
-const AddTaskPopup = ({ open, onClose ,onSubmit }) => {
+const AddTaskPopup = ({data, open, onClose ,onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -16,15 +16,15 @@ const AddTaskPopup = ({ open, onClose ,onSubmit }) => {
     formState: { errors }
   } = useForm();
 
-  const submitForm = (data) => {
-    onSubmit(data);   // ✅ send data to parent
+  const submitForm = (Formdata) => {
+    onSubmit(Formdata);   // ✅ send data to parent
     reset();
     onClose();
   };
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>Add Task</DialogTitle>
+      <DialogTitle> {data?.Edit?'Edit Task':'Add New Task'}</DialogTitle>
 
       <DialogContent>
         {/* Task */}
@@ -71,7 +71,7 @@ const AddTaskPopup = ({ open, onClose ,onSubmit }) => {
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
         <Button variant="contained" onClick={handleSubmit(submitForm)}>
-          Save
+          {data?.Edit?'Update':'Save'}
         </Button>
       </DialogActions>
     </Dialog>
