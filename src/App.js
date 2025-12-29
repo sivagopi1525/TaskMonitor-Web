@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import {  Routes, Route, HashRouter} from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home";
 import EmployeeTable from "./pages/EmployeeTable";
@@ -12,7 +12,8 @@ import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
-   <BrowserRouter basename="/">
+   <HashRouter>
+
       <Routes>
 
         {/* Public Routes */}
@@ -36,7 +37,7 @@ function App() {
         </Route>
 
       </Routes>
-    </BrowserRouter>
+   </HashRouter>
   );
 }
 
