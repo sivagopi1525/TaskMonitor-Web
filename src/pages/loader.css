@@ -1,0 +1,97 @@
+
+
+        .loaderbody {
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+ 
+
+        .loader {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            margin: 0 auto 30px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 0;
+            animation: rotate 2s linear infinite;
+        }
+
+        /* Creating 20 dots in a circle with gradient colors */
+        .dot:nth-child(1) { transform: rotate(0deg) translateX(75px); background: #00d4ff; animation-delay: 0s; }
+        .dot:nth-child(2) { transform: rotate(18deg) translateX(75px); background: #00d9f5; animation-delay: 0.1s; }
+        .dot:nth-child(3) { transform: rotate(36deg) translateX(75px); background: #00deeb; animation-delay: 0.2s; }
+        .dot:nth-child(4) { transform: rotate(54deg) translateX(75px); background: #00e3e1; animation-delay: 0.3s; }
+        .dot:nth-child(5) { transform: rotate(72deg) translateX(75px); background: #00e8d7; animation-delay: 0.4s; }
+        .dot:nth-child(6) { transform: rotate(90deg) translateX(75px); background: #00edcd; animation-delay: 0.5s; }
+        .dot:nth-child(7) { transform: rotate(108deg) translateX(75px); background: #00f2c3; animation-delay: 0.6s; }
+        .dot:nth-child(8) { transform: rotate(126deg) translateX(75px); background: #00f7b9; animation-delay: 0.7s; }
+        .dot:nth-child(9) { transform: rotate(144deg) translateX(75px); background: #00fcaf; animation-delay: 0.8s; }
+        .dot:nth-child(10) { transform: rotate(162deg) translateX(75px); background: #0fffa5; animation-delay: 0.9s; }
+        .dot:nth-child(11) { transform: rotate(180deg) translateX(75px); background: #1fff9b; animation-delay: 1s; }
+        .dot:nth-child(12) { transform: rotate(198deg) translateX(75px); background: #2fff91; animation-delay: 1.1s; }
+        .dot:nth-child(13) { transform: rotate(216deg) translateX(75px); background: #3fff87; animation-delay: 1.2s; }
+        .dot:nth-child(14) { transform: rotate(234deg) translateX(75px); background: #4fff7d; animation-delay: 1.3s; }
+        .dot:nth-child(15) { transform: rotate(252deg) translateX(75px); background: #5fff73; animation-delay: 1.4s; }
+        .dot:nth-child(16) { transform: rotate(270deg) translateX(75px); background: #6fff69; animation-delay: 1.5s; }
+        .dot:nth-child(17) { transform: rotate(288deg) translateX(75px); background: #7fff5f; animation-delay: 1.6s; }
+        .dot:nth-child(18) { transform: rotate(306deg) translateX(75px); background: #8fff55; animation-delay: 1.7s; }
+        .dot:nth-child(19) { transform: rotate(324deg) translateX(75px); background: #9fff4b; animation-delay: 1.8s; }
+        .dot:nth-child(20) { transform: rotate(342deg) translateX(75px); background: #afff41; animation-delay: 1.9s; }
+
+        @keyframes rotate {
+            0% {
+                opacity: 1;
+                transform: rotate(var(--rotation)) translateX(75px) scale(1);
+            }
+            50% {
+                opacity: 0.3;
+                transform: rotate(var(--rotation)) translateX(75px) scale(0.6);
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(var(--rotation)) translateX(75px) scale(1);
+            }
+        }
+
+        /* Assign CSS variables for rotation */
+        .dot:nth-child(1) { --rotation: 0deg; }
+        .dot:nth-child(2) { --rotation: 18deg; }
+        .dot:nth-child(3) { --rotation: 36deg; }
+        .dot:nth-child(4) { --rotation: 54deg; }
+        .dot:nth-child(5) { --rotation: 72deg; }
+        .dot:nth-child(6) { --rotation: 90deg; }
+        .dot:nth-child(7) { --rotation: 108deg; }
+        .dot:nth-child(8) { --rotation: 126deg; }
+        .dot:nth-child(9) { --rotation: 144deg; }
+        .dot:nth-child(10) { --rotation: 162deg; }
+        .dot:nth-child(11) { --rotation: 180deg; }
+        .dot:nth-child(12) { --rotation: 198deg; }
+        .dot:nth-child(13) { --rotation: 216deg; }
+        .dot:nth-child(14) { --rotation: 234deg; }
+        .dot:nth-child(15) { --rotation: 252deg; }
+        .dot:nth-child(16) { --rotation: 270deg; }
+        .dot:nth-child(17) { --rotation: 288deg; }
+        .dot:nth-child(18) { --rotation: 306deg; }
+        .dot:nth-child(19) { --rotation: 324deg; }
+        .dot:nth-child(20) { --rotation: 342deg; }
+
+        .loading-text {
+            color: #6c7a89;
+            font-size: 18px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }

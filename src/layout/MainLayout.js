@@ -69,7 +69,7 @@ function AppHeader() {
 function AppFooter() {
   return (
     <div className="appfooter bg-dark text-white text-center py-3 mt-4">
-      <p>© 2025 Employee Tracker. All rights reserved.</p>
+      <div><p>© 2025 Employee Tracker. All rights reserved.</p></div>
       <div className="socialmediaicons">
         <Facebook size={22} style={{ margin: "0 5px" }} />
         <Instagram size={22} style={{ margin: "0 5px" }} />

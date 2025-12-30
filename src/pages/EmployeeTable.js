@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { FiPlus } from "react-icons/fi";
 import AddTaskPopup from "../Modal/itemModal"
 import ConformationPopup from "../Modal/conformationmodal"
+import Loader from "./Loader";
 export default function EmployeeTable() {
   const [popupopen, setPopupopen] = useState(false);
   const [popupopen2, setPopupopen2] = useState(false);
@@ -17,6 +18,7 @@ export default function EmployeeTable() {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState("");
   const [popupdata, setPopupdata] = useState(null)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchItems();
@@ -31,11 +33,15 @@ export default function EmployeeTable() {
     setUsers(prevUsers => [...prevUsers, {id:mockUsers.length,name:newUser}]);
   }, []);
   const fetchItems = async () => {
+          setLoading(true)
     try {
       const res = await itemService.Getitems();
-      console.log('apires', res);        // actual response data
+      console.log('apires', res); 
+          setLoading(false)
+             // actual response data
       setTaskitems(res);
     } catch (error) {
+          setLoading(false)
       console.error(error);
     }
   };
@@ -122,9 +128,9 @@ export default function EmployeeTable() {
     // setSelectedItem(null);
   };
 
-
-
-
+  if (loading) {
+    return <Loader />
+  } else {
   return (
     <div>
       <div className="filter-container">
@@ -250,7 +256,7 @@ export default function EmployeeTable() {
     </div>
 
   );
-
+  }
 };
 
 

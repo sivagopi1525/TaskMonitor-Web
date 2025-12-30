@@ -13,6 +13,8 @@
   text-align: center;
   padding: 10px;
   background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
 }
 .blackbutton{
   color: white;
