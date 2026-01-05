@@ -16,7 +16,7 @@ export default function EmployeeTable() {
   const [startdate, setStartdate] = useState(formatDate(new Date()));
   const [enddate, setEnddate] = useState(formatDate(new Date()));
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState("");
+  const [selectedUserid, setSelectedUserid] = useState("");
   const [popupdata, setPopupdata] = useState(null)
   const [loading, setLoading] = useState(false);
 
@@ -29,26 +29,35 @@ export default function EmployeeTable() {
     ];
     setUsers(mockUsers);
     const newUser = localStorage.getItem("Username")
-    setSelectedUser(newUser)
-    setUsers(prevUsers => [...prevUsers, {id:mockUsers.length,name:newUser}]);
+    const Userid = localStorage.getItem("Userid");
+    setSelectedUserid(Userid)
+    setUsers(prevUsers => [...prevUsers, { id: Userid, name: newUser }]);
   }, []);
   const fetchItems = async () => {
-          setLoading(true)
+    setLoading(true)
     try {
       const res = await itemService.Getitems();
-      console.log('apires', res); 
-          setLoading(false)
-             // actual response data
+      console.log('apires', res);
+      setLoading(false)
+      // actual response data
       setTaskitems(res);
     } catch (error) {
-          setLoading(false)
+      setLoading(false)
       console.error(error);
     }
   };
-  const handleFilter = () => {
-    console.log('startdate', startdate)
-    console.log('enddate', enddate)
-    console.log('selectedUser', selectedUser)
+  const handleFilter = async () => {
+    setLoading(true)
+    try {
+      const res = await itemService.Getfilteritems(selectedUserid, startdate, enddate);
+      console.log('apires', res);
+      setLoading(false)
+      // actual response data
+      setTaskitems(res);
+    } catch (error) {
+      setLoading(false)
+      console.error(error);
+    }
   };
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedItem, setSelectedItem] = React.useState(null);
@@ -67,8 +76,8 @@ export default function EmployeeTable() {
     setPopupdata({ header: 'Add New Task', Edit: false })
   }
   const handleAddTask = async (formData) => {
-    console.log('formData',formData)
-        console.log('selectedItem',selectedItem)
+    console.log('formData', formData)
+    console.log('selectedItem', selectedItem)
     const now = new Date();
     const payload = {
       ...formData,
@@ -78,9 +87,10 @@ export default function EmployeeTable() {
         day: "2-digit",
       }),
       Name: localStorage.getItem("Username"),
+      userId: localStorage.getItem("Userid")
     };
     if (popupdata?.Edit) {
-    if(!selectedItem?._id) return
+      if (!selectedItem?._id) return
       try {
         console.log("Received from child:", payload);
         const res = await itemService.Edititem(selectedItem?._id, payload);
@@ -104,7 +114,7 @@ export default function EmployeeTable() {
   };
 
   const handleAddTask2 = async () => {
-    console.log('selectedItem',selectedItem)
+    console.log('selectedItem', selectedItem)
     try {
       if (selectedItem?._id != null) {
         const res = await itemService.Deleteitem(selectedItem?._id);
@@ -128,11 +138,12 @@ export default function EmployeeTable() {
     // setSelectedItem(null);
   };
 
-  if (loading) {
-    return <Loader />
-  } else {
   return (
     <div>
+        <div style={{ position: "relative" }}>
+
+    {/* 🔥 Loader overlay */}
+    {loading && <Loader />}
       <div className="filter-container">
         {/* Card */}
         <div className="filter-card">
@@ -155,14 +166,14 @@ export default function EmployeeTable() {
 
           <div className="filterdeopdown">
             <select
-              value={selectedUser}
-              onChange={(e) => setSelectedUser(e.target.value)}
+              value={selectedUserid}
+              onChange={(e) => setSelectedUserid(e.target.value)}
               className="input-box"
             >
               <option value="">-- Select --</option>
               <option value="all">All Users</option>
               {users.map((u) => (
-                <option key={u.id} value={u.name}>
+                <option key={u.id} value={u.id}>
                   {u.name}
                 </option>
               ))}
@@ -252,11 +263,11 @@ export default function EmployeeTable() {
       <AddTaskPopup data={popupdata} open={popupopen} onClose={() => setPopupopen(false)} onSubmit={handleAddTask} />
       {/* popupopen 2 */}
       <ConformationPopup data={popupdata} open={popupopen2} onClose={() => setPopupopen2(false)} onSubmit={handleAddTask2} />
-
+       </div>
     </div>
 
   );
-  }
+
 };
 
 

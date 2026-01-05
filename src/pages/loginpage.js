@@ -29,7 +29,7 @@ export default function Login() {
       localStorage.setItem("Username", apires?.data?.user?.name);
       localStorage.setItem("Usermail", apires?.data?.user?.email);
       localStorage.setItem("Userid", apires?.data?.user?.id);
-      localStorage.setItem("token",apires?.data?.token);
+      localStorage.setItem("token", apires?.data?.token);
       setLoading(false)
       navigate("/main/home");
     } catch {
@@ -38,32 +38,35 @@ export default function Login() {
     }
   };
   const CreateAccount = () => navigate('/Register')
-  if (loading) {
-    return <Loader />
-  } else {
-    return (
-      <form onSubmit={handleSubmit(onLogin)} className="container">
-        <h2>Login</h2>
 
-        <label>Email</label>
-        <input
-          type="email"
-          {...register("email", { required: "Email is required" })}
-        />
-        {errors.email && <p className="error">{errors.email.message}</p>}
+  return (
+      <div style={{ position: "relative" }}>
 
-        <label>Password</label>
-        <input
-          type="password"
-          {...register("password", { required: "Password is required" })}
-        />
-        {errors.password && <p className="error">{errors.password.message}</p>}
-        <div className="actionbuttons">
-          <button className="blackbutton" onClick={CreateAccount}>Create Account</button>
-          <button type="submit">Login</button>
+    {/* 🔥 Loader overlay */}
+    {loading && <Loader />}
+    <form onSubmit={handleSubmit(onLogin)} className="container">
+      <h2>Login</h2>
 
-        </div>
-      </form>
-    );
-  }
+      <label>Email</label>
+      <input
+        type="email"
+        {...register("email", { required: "Email is required" })}
+      />
+      {errors.email && <p className="error">{errors.email.message}</p>}
+
+      <label>Password</label>
+      <input
+        type="password"
+        {...register("password", { required: "Password is required" })}
+      />
+      {errors.password && <p className="error">{errors.password.message}</p>}
+      <div className="actionbuttons">
+        <button className="blackbutton" onClick={CreateAccount}>Create Account</button>
+        <button type="submit">Login</button>
+
+      </div>
+    </form>
+    </div>
+  );
+
 }

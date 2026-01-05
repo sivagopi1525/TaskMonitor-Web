@@ -13,6 +13,10 @@ export const Deleteitem = async (id) => {
   const res = await api.delete(`/item?id=${id}`);
   return res.data;
 };
+export const Getfilteritems = async (userId,startDate,endDate) => {
+  const res = await api.get(`/fiteritems?userId=${userId}&endDate=${endDate}&startDate=${startDate}`);
+  return res.data;
+};
 export  const Edititem= async (id,body)=>{
     const res = await api.put(`/item?id=${id}`,body);
   return res.data;
@@ -25,4 +29,5 @@ export const itemService = {
   Createitem,
   Deleteitem,
   Edititem,
+  Getfilteritems,
 };
