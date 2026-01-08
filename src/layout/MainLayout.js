@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 export default function MainLayout() {
   return (
-    <div>
+    <div >
       <AppHeader />
 
       {/* All nested pages load here */}

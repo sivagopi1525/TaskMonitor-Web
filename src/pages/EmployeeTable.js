@@ -22,16 +22,7 @@ export default function EmployeeTable() {
 
   useEffect(() => {
     fetchItems();
-    const mockUsers = [
-      { id: 1, name: "John" },
-      { id: 2, name: "Kumar" },
-      { id: 3, name: "Priya" }
-    ];
-    setUsers(mockUsers);
-    const newUser = localStorage.getItem("Username")
-    const Userid = localStorage.getItem("Userid");
-    setSelectedUserid(Userid)
-    setUsers(prevUsers => [...prevUsers, { id: Userid, name: newUser }]);
+    fetchUsers()
   }, []);
   const fetchItems = async () => {
     setLoading(true)
@@ -41,6 +32,29 @@ export default function EmployeeTable() {
       setLoading(false)
       // actual response data
       setTaskitems(res);
+    } catch (error) {
+      setLoading(false)
+      console.error(error);
+    }
+  };
+  const fetchUsers = async () => {
+    setLoading(true)
+    try {
+      const res = await itemService.GetUsers();
+      console.log('apires', res);
+      if (res) {
+        const result =[]
+         res.forEach(element => {
+             result.push({ id: element._id, name: element.name })
+        });
+        // actual response data
+        setUsers(result);
+        const newUser = localStorage.getItem("Username")
+        const Userid = localStorage.getItem("Userid");
+        setSelectedUserid(Userid)
+        setUsers(prevUsers => [...prevUsers, { id: Userid, name: newUser }]);
+      }
+      setLoading(false)
     } catch (error) {
       setLoading(false)
       console.error(error);
@@ -140,130 +154,130 @@ export default function EmployeeTable() {
 
   return (
     <div>
-        <div style={{ position: "relative" }}>
+      <div style={{ position: "relative" }}>
 
-    {/* 🔥 Loader overlay */}
-    {loading && <Loader />}
-      <div className="filter-container">
-        {/* Card */}
-        <div className="filter-card">
-          <div className="filterdate">
-            <input
-              type="date"
-              value={startdate}
-              onChange={(e) => setStartdate(e.target.value)}
-              className="input-box"
-            />
-          </div>
-          <div className="filterdate">
-            <input
-              type="date"
-              value={enddate}
-              onChange={(e) => setEnddate(e.target.value)}
-              className="input-box"
-            />
-          </div>
+        {/* 🔥 Loader overlay */}
+        {loading && <Loader />}
+        <div className="filter-container">
+          {/* Card */}
+          <div className="filter-card">
+            <div className="filterdate">
+              <input
+                type="date"
+                value={startdate}
+                onChange={(e) => setStartdate(e.target.value)}
+                className="input-box"
+              />
+            </div>
+            <div className="filterdate">
+              <input
+                type="date"
+                value={enddate}
+                onChange={(e) => setEnddate(e.target.value)}
+                className="input-box"
+              />
+            </div>
 
-          <div className="filterdeopdown">
-            <select
-              value={selectedUserid}
-              onChange={(e) => setSelectedUserid(e.target.value)}
-              className="input-box"
-            >
-              <option value="">-- Select --</option>
-              <option value="all">All Users</option>
-              {users.map((u) => (
-                <option key={u.id} value={u.id}>
-                  {u.name}
-                </option>
-              ))}
-            </select>
-          </div>
+            <div className="filterdeopdown">
+              <select
+                value={selectedUserid}
+                onChange={(e) => setSelectedUserid(e.target.value)}
+                className="input-box"
+              >
+                <option value="">-- Select --</option>
+                <option value="all">All Users</option>
+                {users.map((u) => (
+                  <option key={u.id} value={u.id}>
+                    {u.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
 
-          <div>
-            <button className="filter-btn" onClick={handleFilter}>
-              Filter
-            </button>
-          </div>
-          <div>
-            <button className="filter-btn" onClick={popupopenmodal}>
-              <FiPlus /> Add
-            </button>
+            <div>
+              <button className="filter-btn" onClick={handleFilter}>
+                Filter
+              </button>
+            </div>
+            <div>
+              <button className="filter-btn" onClick={popupopenmodal}>
+                <FiPlus /> Add
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="table-card">
-        <table className="custom-table">
-          <thead>
-            <tr>
-              <th>Name/Date</th>
-              <th>Priority level</th>
-              <th>Task Description</th>
-              <th>Working</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {taskitems.length === 0 ? (
+        <div className="table-card">
+          <table className="custom-table">
+            <thead>
               <tr>
-                <td colSpan="4" className="no-data">
-                  No updates found
-                </td>
+                <th>Name/Date</th>
+                <th>Priority level</th>
+                <th>Task Description</th>
+                <th>Working</th>
+                <th>Action</th>
               </tr>
-            ) : (
-              taskitems.map((item, idx) => {
-                return (<tr key={idx}>
-                  <td ><span>{item.Name}</span><br></br> <span>{item.Date}</span></td>
-                  <td>{item.Priority}</td>
-                  <td>{item.Task}</td>
-                  <td>{item.Workinghours}hours</td>
-                  <td>
-                    <button className="action-btn">
-                      <div>
-                        <Button onClick={(e) => handleClick(e, item)}>
-                          &#8942;
-                        </Button>
-                      </div>
+            </thead>
 
-                    </button>
+            <tbody>
+              {taskitems.length === 0 ? (
+                <tr>
+                  <td colSpan="4" className="no-data">
+                    No updates found
                   </td>
-                </tr>)
-              }
+                </tr>
+              ) : (
+                taskitems.map((item, idx) => {
+                  return (<tr key={idx}>
+                    <td ><span>{item.Name}</span><br></br> <span>{item.Date}</span></td>
+                    <td>{item.Priority}</td>
+                    <td>{item.Task}</td>
+                    <td>{item.Workinghours}hours</td>
+                    <td>
+                      <button className="action-btn">
+                        <div>
+                          <Button onClick={(e) => handleClick(e, item)}>
+                            &#8942;
+                          </Button>
+                        </div>
 
-              )
-            )}
-          </tbody>
-        </table>
+                      </button>
+                    </td>
+                  </tr>)
+                }
+
+                )
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        <Menu
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={() => {
+            edititem();
+            handleClose();
+          }}>
+            Edit
+          </MenuItem>
+
+          <MenuItem onClick={() => {
+            deleteitem();
+            handleClose();
+          }}>
+            Delete
+          </MenuItem>
+        </Menu>
+
+
+        {/* popupopen  */}
+        <AddTaskPopup data={popupdata} open={popupopen} onClose={() => setPopupopen(false)} onSubmit={handleAddTask} />
+        {/* popupopen 2 */}
+        <ConformationPopup data={popupdata} open={popupopen2} onClose={() => setPopupopen2(false)} onSubmit={handleAddTask2} />
       </div>
-
-      <Menu
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={() => {
-          edititem();
-          handleClose();
-        }}>
-          Edit
-        </MenuItem>
-
-        <MenuItem onClick={() => {
-          deleteitem();
-          handleClose();
-        }}>
-          Delete
-        </MenuItem>
-      </Menu>
-
-
-      {/* popupopen  */}
-      <AddTaskPopup data={popupdata} open={popupopen} onClose={() => setPopupopen(false)} onSubmit={handleAddTask} />
-      {/* popupopen 2 */}
-      <ConformationPopup data={popupdata} open={popupopen2} onClose={() => setPopupopen2(false)} onSubmit={handleAddTask2} />
-       </div>
     </div>
 
   );

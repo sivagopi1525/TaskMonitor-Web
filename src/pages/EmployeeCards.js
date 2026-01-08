@@ -1,18 +1,35 @@
-import employees from "../Json_Data/employee.json";
+import { useEffect, useState } from "react";
 import './pages.css';
-
+import { itemService } from "../services/item";
+import Loader from "./Loader";
 export default function EmployeeCards() {
+   const [loading, setLoading] = useState(false);
+  const [taskitems, setTaskitems] = useState([])
+    useEffect(() => {
+      fetchUsers();
+    }, []);
+      const fetchUsers = async () => {
+        setLoading(true)
+        try {
+          const res = await itemService.GetUsers();
+          console.log('apires', res);
+          setLoading(false)
+          // actual response data
+          setTaskitems(res);
+        } catch (error) {
+          setLoading(false)
+          console.error(error);
+        }
+      };
     return(
     <div className="row g-3 mt-3">
-      {employees.map(emp => (
-        <div className="col-md-6 col-lg-4" key={emp.id} onClick={() => cardhandleRowClick(emp)}>
+       {loading && <Loader />}
+      {taskitems.map((emp,index) => (
+        <div className="col-md-6 col-lg-4" key={emp._id} onClick={() => cardhandleRowClick(emp)}>
           <div className="card shadow-sm p-3 h-100">
             <h5 className="card-title">{emp.name}</h5>
-            <p className="card-text"><strong>Position:</strong> {emp.position}</p>
-            <p className="card-text"><strong>Rank:</strong> {emp?.Details?.rank}</p>
-            <p className="card-text"><strong>Credit:</strong> {emp?.Details?.credit} €</p>
-            <p className="card-text"><strong>Debit:</strong> {emp?.Details?.debit} €</p>
-            <p className="card-text"><strong>Profit:</strong> {emp?.Details?.credit - emp?.Details?.debit} €</p>
+            <p className="card-text"><strong>Email:</strong> {emp.email}</p>
+            <p className="card-text"><strong>Rank:</strong> {index*12}</p>
           </div>
         </div>
       ))}
